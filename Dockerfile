@@ -17,7 +17,7 @@
 # Please file any issues or PRs at https://github.com/gocd/docker-gocd-agent
 ###############################################################################################
 
-FROM debian:9
+FROM debian:stretch
 MAINTAINER GoCD <go-cd-dev@googlegroups.com>
 
 LABEL gocd.version="18.9.0" \
@@ -51,7 +51,7 @@ RUN \
   apt-get autoclean && \
   /var/lib/dpkg/info/ca-certificates-java.postinst configure && \
 # download the zip file
-  curl --fail --location --silent --show-error "https://download.gocd.org/experimental/binaries/18.9.0-7478/generic/go-agent-18.9.0-7478.zip" > /tmp/go-agent.zip && \
+  curl --fail --location --silent --show-error "https://download.gocd.org/binaries/18.9.0-7478/generic/go-agent-18.9.0-7478.zip" > /tmp/go-agent.zip && \
 # unzip the zip file into /go-agent, after stripping the first path prefix
   unzip /tmp/go-agent.zip -d / && \
   mv go-agent-18.9.0 /go-agent && \
